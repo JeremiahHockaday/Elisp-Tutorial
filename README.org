@@ -1,0 +1,172 @@
+#+TITLE: Elisp Tutorial - An Interactive Introduction to Emacs Lisp
+#+AUTHOR: CloudStreet Dev
+#+DESCRIPTION: Learn Emacs Lisp through hands-on examples in a self-contained tutorial
+
+* Elisp Tutorial
+
+An interactive, self-contained tutorial for learning Emacs Lisp (Elisp), inspired by the built-in Emacs tutorial. Learn by doing with practical examples and exercises that run directly in your Emacs editor.
+
+** Features
+
+- *Self-contained*: Everything you need is in one =.el= file
+- *Interactive*: Learn by evaluating real code with =C-x C-e=
+- *Progressive*: Start with basics and build up to creating your own commands
+- *Practical*: Includes exercises and a final project
+- *Comprehensive*: Covers the essential concepts needed for Emacs customization
+
+** Getting Started
+
+*** Prerequisites
+
+- GNU Emacs (version 24 or higher)
+- Basic familiarity with Emacs navigation (the built-in Emacs tutorial is recommended first)
+
+*** Installation
+
+1. Clone this repository or download =elisp-tutorial.el=:
+   #+begin_src shell
+   git clone https://github.com/cloudstreet-dev/Elisp-Tutorial.git
+   #+end_src
+
+2. Open the tutorial file in Emacs:
+   #+begin_src shell
+   emacs elisp-tutorial.el
+   #+end_src
+
+   Or from within Emacs:
+   #+begin_src elisp
+   C-x C-f elisp-tutorial.el RET
+   #+end_src
+
+3. Start reading from the top and follow the instructions!
+
+** How to Use the Tutorial
+
+*** Basic Instructions
+
+1. Read each section carefully
+2. When you see code like this: =(+ 2 3)=
+   - Place your cursor right after the closing parenthesis
+   - Press =C-x C-e= to evaluate the expression
+   - The result appears in the minibuffer
+3. Complete the exercises marked as =EXERCISE=
+4. Experiment! Modify the examples and see what happens
+
+*** Key Bindings You'll Use
+
+| Key       | Function                        |
+|-----------+---------------------------------|
+| =C-x C-e= | Evaluate expression at point    |
+| =C-h f=   | Describe function               |
+| =C-h v=   | Describe variable               |
+| =C-h k=   | Describe key binding            |
+| =M-x=     | Execute interactive command     |
+
+** What You'll Learn
+
+The tutorial covers 10 comprehensive lessons:
+
+1. *Basic Evaluation & Data Types*
+   - Numbers, strings, symbols
+   - Basic arithmetic operations
+   - Understanding prefix notation
+
+2. *Variables and Binding*
+   - Global variables with =setq=
+   - Local variables with =let= and =let*=
+   - Variable scope
+
+3. *Functions*
+   - Defining functions with =defun=
+   - Parameters and return values
+   - Optional parameters
+
+4. *Lists*
+   - Creating and accessing lists
+   - =car=, =cdr=, and list manipulation
+   - Processing with =mapcar= and filtering
+
+5. *Control Flow*
+   - Conditionals: =if=, =cond=, =when=, =unless=
+   - Boolean logic: =and=, =or=
+   - Pattern matching
+
+6. *Buffer Manipulation*
+   - Working with Emacs buffers
+   - Inserting and modifying text
+   - Moving the cursor programmatically
+
+7. *Interactive Commands*
+   - Creating =M-x= commands
+   - Reading user input
+   - Working with regions
+   - Key bindings
+
+8. *Hooks and Advice*
+   - Customizing Emacs behavior
+   - Mode hooks
+   - Modifying existing functions
+
+9. *Text Processing*
+   - Regular expressions
+   - Search and replace
+   - Pattern matching
+
+10. *Final Project*
+    - Build a working todo list system
+    - Apply all concepts learned
+
+** Example Code
+
+Here's a taste of what you'll be creating:
+
+#+begin_src elisp
+(defun greet (name)
+  "Greet someone by NAME."
+  (message "Hello, %s!" name))
+
+(greet "Emacs User")  ; Displays: Hello, Emacs User!
+#+end_src
+
+** After the Tutorial
+
+Once you complete this tutorial, you'll be ready to:
+
+- Customize your Emacs configuration (=init.el=)
+- Write your own Emacs commands and functions
+- Understand and modify existing Emacs packages
+- Create your own Emacs packages
+- Read and understand the Emacs Lisp Reference Manual
+
+*** Recommended Next Steps
+
+1. Start customizing your =~/.emacs.d/init.el=
+2. Explore built-in Emacs packages with =M-x list-packages=
+3. Read the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/][Emacs Lisp Reference Manual]]
+4. Study code from packages you use
+5. Join the Emacs community ([[https://www.reddit.com/r/emacs/][r/emacs]], [[https://emacs.stackexchange.com/][Emacs StackExchange]])
+
+** Contributing
+
+Found an issue or have a suggestion? Feel free to:
+- Open an issue on GitHub
+- Submit a pull request
+- Fork and create your own version
+
+** License
+
+This tutorial is provided as-is for educational purposes. Feel free to use, modify, and share.
+
+** Acknowledgments
+
+- Inspired by the built-in Emacs tutorial
+- Thanks to the Emacs and Elisp community for decades of excellent documentation
+- Created with the philosophy that the best way to learn is by doing
+
+---
+
+*Happy hacking! Remember: Emacs is not just an editor, it's a Lisp machine disguised as an editor.*
+
+#+begin_quote
+"Emacs is a nice operating system, but I prefer UNIX." — Unknown
+#+end_quote
