@@ -125,20 +125,42 @@ greeting
 
 (calculate-area 4 5)
 
-;; Functions can have optional parameters:
+;; Functions can be conditional:
+(defun pirate (isPirate)
+  "If isPirate is true, then yo ho ho! else walk the plank"
+  (if (= t isPirate);; if isPirate = t
+      "Yo ho ho!";; then return "Yo ho ho!"
+    "Walk the plank!" ;; else, return "Walk the plank!"
+  ))
+
+;; Functions can have optional parameters as well.
+;; `if` will do the first argument only if it does not equal `nil`.
+;; Of course, the lack of input equals nil,  as in this example:
 (defun greet-formally (name &optional title)
   "Greet NAME with optional TITLE."
   (if title
       (message "Hello, %s %s!" title name)
     (message "Hello, %s!" name)))
 
+
 (greet-formally "Smith")
 (greet-formally "Smith" "Dr.")
 
-;; EXERCISE 3: Write a function that takes two numbers
-;; and returns the larger one
-;; Write your answer here:
+;; elisp also supports lambda functions. these are local functions,
+;; that are not named. evaluate the following line:
+((lambda (n) (+ n 10)) 3)
 
+;; the above lambda function is the same as `add-ten`! lets test that"
+(defun check-add-ten (n)
+(= ((lambda (n) (+ n 10)) n) (add-ten n)))
+
+;; plugging in any number here returns `t`.
+(check-add-ten 14)
+
+
+;; EXERCISE 3: Write a function called "max-bin" that takes two numbers
+;; and returns the larger one.
+;; Write your answer here:
 
 ;; ============================================================================
 ;; LESSON 4: Lists - The Foundation of Lisp
@@ -162,12 +184,22 @@ greeting
 
 ;; Check list properties:
 (length my-list)
-(member 3 my-list)              ; Returns sublist starting with 3 if found
+(member 3 my-list)              ; Returns sub-list starting with 3 if found
 
-;; Process lists with mapcar:
+;; you can Process a list, i.e., apply functions to a list component-wise, with
+;; mapcar:
+
 (mapcar (lambda (x) (* x 2)) my-list)
 
-;; Filter lists:
+;; to use a function you already named, you must tell lisp that it is a symbol:
+(mapcar 'add-ten my-list)
+
+;; If your function takes in multiple variables, use `cl-mapcar` and provide
+;; multiple lists.
+;; (warning: this line only works if you have completed exercise 3)
+(cl-mapcar 'max-bin  (mapcar 'add-ten my-list) my-list) 
+
+;; you can filter a list by predicates:
 (seq-filter (lambda (x) (> x 2)) my-list)
 
 ;; EXERCISE 4: Create a list of your favorite fruits and
